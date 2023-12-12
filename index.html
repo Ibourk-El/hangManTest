@@ -9,19 +9,63 @@
   <body>
     <div class="container">
       <section class="main-game">
-        <main class="quation-box">
-          <h2 class="quation">what is the best in the word</h2>
+        <main class="quetion-box">
+          <h2 class="quetion" id="quetion">what is the best in the word</h2>
           <p class="answer-box" id="answer-box"></p>
         </main>
         <div class="keyboard-box" id="keyboard-box"></div>
+        <!-- restart btns -->
+        <div class="btns">
+          <button class="restart">Restert</button>
+          <button class="menu-btn">Menu</button>
+        </div>
+        <!--  -->
       </section>
       <section class="score-box">
         <p>Chance : <span class="chance" id="chance">10</span></p>
-				<div class="image-box">
-					<img src="./payer.png" alt="winner image">
-				</div>
+        <div class="image-box">
+          <img
+            src="https://th.bing.com/th/id/R.2b0f71d2a627e645e9e90e7626c364fc?rik=yC6ceBo5Q4OeoA&riu=http%3a%2f%2f38.media.tumblr.com%2f9090cb6cc02624bb48d5c165eaf45b4e%2ftumblr_nihkxyund01qiy96so1_250.gif&ehk=OphJFsqM70xUuwUtjIVH4Iyfv6hL62a20a0W13Ik9X0%3d&risl=&pid=ImgRaw&r=0"
+            alt="winner image"
+          />
+          <div class="close" id="close"></div>
+        </div>
       </section>
+      
     </div>
-    <script src="script.js"></script>
+    <!--  -->
+      <div class="menu" id="menu">
+        <div class="cards-box">
+          <main data-catigory="football" class="card">
+            <div data-catigory="football" class="image-box">
+              <img
+                data-catigory="football"
+                src="./football.jpg"
+                alt="football"
+              />
+            </div>
+            <h3 class="title" data-catigory="football">football</h3>
+          </main>
+          <main data-catigory="tennis" class="card">
+            <div data-catigory="tennis" class="image-box">
+              <img data-catigory="tennis" src="./tennis.jpg" alt="football" />
+            </div>
+            <h3 data-catigory="tennis" class="title">tennis</h3>
+          </main>
+          <main data-catigory="marathon" class="card">
+            <div data-catigory="marathon" class="image-box">
+              <img
+                data-catigory="marathon"
+                src="./marathon.jpg"
+                alt="football"
+              />
+            </div>
+            <h3 data-catigory="marathon" class="title">marathon</h3>
+          </main>
+        </div>
+        <button class="start">start</button>
+      </div>
+    <script type="module" src="quetions.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

@@ -1,0 +1,47 @@
+
+{
+  "Cristiano": [
+    {
+        "question": "1. What is Cristiano Ronaldo's full name?",
+        "response": "Cristiano"
+      },
+      {
+        "question": "2. In which did Cristiano Ronaldo win his first Ballon d'Or?",
+        "response": "MUN"
+      },
+      {
+        "question": "3. How many UEFA Champions League titles has Cristiano Ronaldo won?",
+        "response": "Five"
+      },
+      {
+        "question": "4. Which national teams has Cristiano Ronaldo played for during his international career?",
+        "response": "Portugal"
+      },
+      {
+        "question": "5. What is Cristiano Ronaldo's preferred playing position on the field?",
+        "response": "Forward"
+      }
+  ],
+  "Messi":[
+    {
+        "question": "1. What is Lionel Messi's full name?",
+        "response": "Lionel"
+      },
+      {
+        "question": "2. In which year did Lionel Messi make his first-team debut for FC Barcelona?",
+        "response": "Barcelona"
+      },
+      {
+        "question": "3. How many Ballon d'Or awards has Lionel Messi won as of my last knowledge update in January 2022?",
+        "response": "Eight"
+      },
+      {
+        "question": "4. Which club did Lionel Messi join in August 2021 after leaving FC Barcelona?",
+        "response": "PSG"
+      },
+      {
+        "question": "5. What is Lionel Messi's preferred foot for taking shots?",
+        "response": "Left"
+      }
+    ]
+  }
