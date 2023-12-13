@@ -4,12 +4,16 @@
   padding: 0;
   font-family: sans-serif;
 }
+:root{
+  --border-color:#aaa;
+  --box-color: #eee;
+}
 body {
-  background-image: url(./bg1.jpg);
+  background-image: url(./img/bg2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   overflow: hidden;
   height: 100vh;
 }
@@ -31,7 +35,7 @@ body {
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  border: 5px solid #aaa;
+  /* border: 5px solid #aaa; */
   position: relative;
 }
 
@@ -43,7 +47,8 @@ body {
 .main-game .quetion-box h2 {
   margin: 10px;
   padding: 10px;
-  background-color: #eee;
+  color: #ccc;
+  background-color: #eeeeee00;
   border-radius: 10px;
   box-shadow: 0px 10px 5px 0px #000000;
   margin: 20px 0;
@@ -56,13 +61,15 @@ body {
 }
 .main-game .quetion-box .answer-box .answer-letter {
   padding: 10px;
-  background-color: rgb(231, 228, 228);
+  background-color: #e7e4e4;
   margin: 0 2px;
   font-size: 20px;
   border-radius: 10px;
-  box-shadow: 0px 10px 5px 0px #000000;
+  box-shadow: 0px 0px 10px 0px #000000;
   white-space: pre;
+
 }
+
 
 .main-game .keyboard-box {
   display: flex;
@@ -70,6 +77,9 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   max-width: 600px;
+  background-color: #eeeeee00;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .main-game .keyboard-box .letter {
@@ -78,19 +88,22 @@ body {
   border-radius: 5px 10px;
   font-size: 20px;
   font-weight: bold;
-  background-color: #eee;
+  background-color: #eeeeee90;
   margin: 6px;
   text-align: center;
-  box-shadow: 0px 10px 5px 0px #000000;
+  box-shadow: 0px 0px 10px 0px #000000;
   cursor: pointer;
   white-space: pre;
+  color: #ffffff;
 }
 
 .main-game .keyboard-box .letter.false {
   background-color: #ff00005d;
+  box-shadow: 0px 0px 5px 0px #999999 inset;
 }
 .main-game .keyboard-box .letter.true {
   background-color: #03f80352;
+  box-shadow: 0px 0px 5px 0px #999999 inset;
 }
 
 .container .score-box {
@@ -103,8 +116,8 @@ body {
 }
 
 .container .score-box .image-box {
-  max-width: 250px;
-  border: 5px solid #a8a8a8;
+  max-width: 260px;
+  border: 5px solid var(--border-color);
   position: relative;
   padding: 10px;
   background-color: #eee;
@@ -119,7 +132,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #eee;
+  background-color: var(--box-color);
   top: 0;
   left: 0;
 }
@@ -136,6 +149,9 @@ body {
   justify-content: center;
   flex-direction: column;
   backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: all 1s;
+  /* display: none; */
 }
 .cards-box {
   width: 100%;
@@ -197,10 +213,69 @@ button:hover {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 0%;
   background-color: #ffffff90;
   backdrop-filter: blur(10px);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 1s;
+  overflow: hidden;
+}
+
+/* data player */
+
+.player-data{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eeeeee90;
+  width: 250px;
+  margin-bottom: 10px;
+  border: 3px solid var(--border-color);
+}
+.player-data{
+  padding: 10px;
+}
+
+@media (max-width:860px) {
+  .container{
+    width: 100%;
+    height: 100%;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+  }
+  .container .main-game{
+      width: 100%;
+      height: 60%;
+    }
+    .main-game .keyboard-box{
+      padding: 5px;
+    }
+    .main-game .keyboard-box .letter{
+      padding: 8px;
+      font-size: 16px;
+
+    }
+    .container .score-box{
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-around;
+      height: 40%;
+    }
+    .player-data{
+      flex-direction: column;
+      width: 30%;
+    }
+    .main-game .quetion-box h2{
+      padding: 5px;
+      font-size: 16px;
+    }
+    .main-game .quetion-box .answer-box .answer-letter{
+      padding: 6px 10px;
+    }
+        .main-game .quetion-box .answer-box{
+          margin: 10px;
+        }
+  
 }

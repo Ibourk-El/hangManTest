@@ -1,6 +1,12 @@
 export let quetions = {
   football: [
     {
+      gif: "./img/football.gif",
+      img: "./img/football.png",
+      bg:"./img/bg2.jpg",
+      sound:"Ronaldo-suii-1.mp3"
+    },
+    {
       question: "Who won the 2022 FIFA World Cup?",
       answer: "France",
     },
@@ -45,6 +51,12 @@ export let quetions = {
     },
   ],
   tennis: [
+    {
+      gif: "./img/tennis.gif",
+      img: "./img/tennis.png",
+      bg:"./img/bg2.jpg",
+      sound:"Ronaldo-suii-1.mp3"
+    },
     {
       question:
         "Who is the all-time Grand Slam singles titles leader in men's tennis?",
@@ -94,6 +106,12 @@ export let quetions = {
     },
   ],
   marathon: [
+    {
+      gif: "./img/marathonrun.gif",
+      img: "./img/marathon.jpg",
+      bg:"./img/bg2.jpg",
+      sound:"Ronaldo-suii-1.mp3"
+    },
     {
       question: "In which city is the Boston Marathon held annually?",
       answer: "Boston",

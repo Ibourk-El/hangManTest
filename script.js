@@ -1,5 +1,4 @@
 import { quetions } from "./quetions.js";
-console.log(quetions);
 let answerBox = document.getElementById("answer-box");
 let chanceEl = document.getElementById("chance");
 let quetionBox = document.getElementById("quetion");
@@ -7,13 +6,18 @@ let menu = document.getElementById("menu");
 let startBtn = document.querySelector(".start");
 let restartBtn = document.querySelector(".restart");
 let menuBtn = document.querySelector(".menu-btn");
+let nextBtn = document.querySelector(".next");
+let btnsBox = document.querySelector(".btns");
 let cards = document.querySelectorAll(".card");
 let btnsMenu = document.querySelector(".btns");
+let keyboardBox = document.getElementById("keyboard-box");
+let score = document.querySelector( ".score" );
 
 //
-let catigory = "football";
+let scoreNum=0
+let catigory = "";
 let catigoryQuetion = quetions[catigory];
-let questionIndex = 0;
+let questionIndex = 1;
 let letters = "azertyuiopmlkjhgfdsqwxcvbn ";
 let chance = 10;
 let heightOfCloser = 100;
@@ -23,26 +27,49 @@ let porsontge = 0;
 cards.forEach((item, i) => {
   item.addEventListener("click", (e) => {
     catigory = e.target.getAttribute("data-catigory");
-    cards[i].classList.add("active");
+    cards[ i ].classList.add( "active" );
+    imgChar.src = quetions[ catigory ][0].img
+    document.body.style.backgroundImage = `url(${quetions[ catigory ][0].bg})`
+    // console.log(quetions[ catigory ][0].gif)
+    heightOfCloser = 100;
     resetVars();
   });
 });
 // start geme
 startBtn.addEventListener("click", (e) => {
-  menu.style.display = "none";
-  console.log("hell");
+  if ( catigory !== "" ) menu.style.height = "0%";
+  questionIndex = 1;
+  heightOfCloser = 100;
+  resetVars();
 });
 
 // restart game
-restartBtn.addEventListener("click", (e) => {
+restartBtn.addEventListener( "click", ( e ) =>
+{
+  heightOfCloser = 100;
   resetVars();
-  e.target.parentElement.style.display = "none";
-});
+  btnsBox.style.height = "0%";
+} );
+// next game
+nextBtn.addEventListener( "click", ( e ) =>
+{
+  questionIndex++;
+  scoreNum++
+  heightOfCloser = 100;
+  score.innerHTML=scoreNum
+  btnsBox.style.height = "0%";
+  imgChar.src = quetions[ catigory ][0].img
+  resetVars();
+} );
 
 // return to menu
 menuBtn.addEventListener("click", (e) => {
-  menu.style.display = "flex";
-  e.target.parentElement.style.display = "none";
+  menu.style.height = "100%";
+  e.target.parentElement.style.height = "0%";
+  cards.forEach( ( e ) =>
+  {
+    e.className="card"
+  })
 });
 
 // add tiris to answer Box
@@ -80,7 +107,8 @@ function pushLettersToBox(className, letters, elFun) {
 }
 //add enents keyBord
 function addEventToLetter(letterBox) {
-  letterBox.addEventListener("click", (e) => {
+  letterBox.addEventListener( "click", ( e ) =>
+  {
     if (letterBox.classList.contains("clicked")) {
       if (
         checkIfLetterInAnsewr(
@@ -96,7 +124,10 @@ function addEventToLetter(letterBox) {
         chanceEl.innerHTML = chance;
         lose(chance);
       }
-      letterBox.classList.remove("clicked");
+      letterBox.classList.remove( "clicked" );
+      playSound("./sounds/mech-keyboard.mp3")
+
+      
     }
   });
 }
@@ -117,7 +148,11 @@ function checkIfLetterInAnsewr(answer, char) {
 // show btns menu win lose
 function lose(x) {
   if (x == 0) {
-    btnsMenu.style.display = "flex";
+    btnsMenu.style.height = "100%";
+    nextBtn.style.display = "none"
+
+    playSound("./sounds/error.wav");
+    removeThCloser(catigoryQuetion);
   }
 }
 
@@ -128,39 +163,49 @@ function removeThCloser(pos) {
 }
 // next quetion
 function toTheNextQuetion(hOfC) {
-  if (hOfC < 0) {
-    if (questionIndex < catigoryQuetion.length) {
-      questionIndex++;
+  if (hOfC <= 0) {
+    if ( questionIndex < catigoryQuetion.length )
+    {
+      // win logic
+      btnsMenu.style.height = "100%"
+      nextBtn.style.display = "inline-block"
+      imgChar.src = quetions[ catigory ][ 0 ].gif
+      heightOfCloser=0
+      playSound("./sounds/win.mp3")
       resetVars();
-    } else {
-      console.log("hello");
+    } else
+    {
+      btnsMenu.style.height = "100%"
+      nextBtn.style.display = "none"
     }
-  }
+  } 
 }
 // to reset data
 function resetVars() {
   catigoryQuetion = quetions[catigory];
-  let letterStyle = document.querySelectorAll(".letter");
-  for (let i = 0; i < letterStyle.length; i++) {
-    letterStyle[i].className = "letter clicked";
-  }
+  quetionBox.innerHTML = catigoryQuetion[ questionIndex ].question;
+  chance = 10;
+  porsontge = 100 / catigoryQuetion[questionIndex].answer.length;
+  removeThCloser( heightOfCloser );
+
+  // reset answer Box
   answerBox.innerHTML = "";
-  quetionBox.innerHTML = catigoryQuetion[questionIndex].question;
   pushLettersToBox(
     "answer-box",
     addTiris(catigoryQuetion[questionIndex].answer),
     addCharToAnswerBox
   );
-  heightOfCloser = 100;
-  chance = 10;
-  porsontge = 100 / catigoryQuetion[questionIndex].answer.length;
-  removeThCloser(heightOfCloser);
-  quetionBox.innerHTML = catigoryQuetion[questionIndex].question;
+    // reset keyboard
+  keyboardBox.innerHTML=""
+  pushLettersToBox("keyboard-box", letters, createLetterBox);
 }
 
-pushLettersToBox("keyboard-box", letters, createLetterBox);
-pushLettersToBox(
-  "answer-box",
-  addTiris(catigoryQuetion[questionIndex].answer),
-  addCharToAnswerBox
-);
+function playSound(audioName){
+  let audio = new Audio(audioName)
+  audio.play();
+}
+
+
+
+
+
